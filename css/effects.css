@@ -1,0 +1,123 @@
+
+/* ------------------------------------------------------------------------------- */
+
+/* -------------------- ** KEYFRAMES ** ----------------------- */
+
+@keyframes blink {
+
+    0% { box-shadow: 0 0 10px #333;}
+
+    50% { box-shadow: 0 0 0px;}
+
+    100% { box-shadow: 0 0 15px #333;}
+
+}
+
+
+@keyframes piscaErrado {
+    
+    0% { background: rgb(255, 50, 50); color: black}
+
+    50% { background: transparent; color: black; }
+
+    100% { background: rgb(255, 50, 50); color: black }
+
+}
+
+@keyframes piscaCerta {
+
+    0% { background: rgb(71, 255, 71); color: black}
+
+    50% { background: transparent; color: black; }
+
+    100% { background: rgb(33, 212, 33); color: black }
+
+}
+
+/* -------------------- ** MAIN ** ----------------------- */
+
+/* CAMPO RESPOSTAS */
+
+.resposta:hover {
+
+    background-color: rgb(41, 73, 255);
+    color: white;
+    box-shadow: 0px 0px 25px rgba(51, 51, 51, 0.70);
+
+}
+
+.resposta:focus {
+
+    outline: none;
+    animation: blink 1.0s linear infinite;
+
+}
+
+.selecionada {
+
+    background-color: rgb(253, 198, 17);
+    display: block;
+    border: 1px solid black;
+    
+    padding: 0px 20px 0px 20px;
+    margin: auto auto;
+    margin-bottom: 20px;
+
+    width: auto;
+    min-width: 100%;
+    height: 40px;
+
+    transition: .5s;
+
+}
+
+.selecionada:hover {
+
+    background-color: rgb(253, 198, 17);
+    color: black;
+
+}
+
+.selecionada:focus {
+
+    outline: none;
+    animation: blink 1.0s linear infinite;
+
+}
+
+.errada {
+
+    background-color: rgb(255, 50, 50);
+    color: white;
+
+    animation: piscaErrado .5s infinite;
+
+}
+
+.correta {
+
+    background-color: rgb(71, 255, 71);
+    color: white;
+
+    animation: piscaCerta .5s infinite;
+    
+}
+
+/* ------------------------------------------------------------------------------- */
+
+/* -------------------- ** FOOTER ** ----------------------- */
+
+#verific:hover {
+
+    background-color: rgb(253, 198, 17);
+    color: #333;
+
+    box-shadow: 0px 0px 10px #333;
+
+    transition: .8s;
+}
+
+/* ------------------------------------------------------------------------------- */
+
+
+
