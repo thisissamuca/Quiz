@@ -40,9 +40,7 @@ https://thisissamuca.github.io/Quiz/
 
 ## 🎨 Layout Desktop
 
-<a href="https://www.figma.com/file/1SxgOMojOB2zYT0Mdk28lB/Ecoleta?node-id=136%3A546">
-  <img alt="Made by tgmarinho" src="https://cdn.discordapp.com/attachments/944392836445503529/944451109123149834/unknown.png">
-</a>
+<img alt="Made by tgmarinho" src="https://cdn.discordapp.com/attachments/944392836445503529/944451109123149834/unknown.png">
 
 ## 🛠 Tecnologias!
 
