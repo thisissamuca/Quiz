@@ -33,54 +33,134 @@
 
     <div class="container">
 
-    <div class="quiz" data-status="ok">
+      <div class="quiz" data-status="ok">
 
-      <header>
+        <header>
 
-        <div class="container">
-  
-          <h1 id="titleQuiz">Teste Seu Conhecimento</h1>
-  
-              <hr>
-  
-        </div>
-  
-      </header>
-
-      <main>
-
-        <div class="container">
-
-          <h2 id="textQuiz"></h2>
-            
-          <div id="respostas">
-  
-            <button id="resp0" value="resp0" class="resposta" type="button"></button>
-
-            <button id="resp1" value="resp1" class="resposta" type="button"></button>
-
-            <button id="resp2" value="resp2" class="resposta" type="button"></button>
-
-            <button id="resp3" value="resp3" class="resposta" type="button"></button>
-  
-          </div>
+          <div class="container">
           
+            <h1 id="titleQuiz">Teste Seu Conhecimento</h1>
+          
+                <hr>
+          
+          </div>
+        
+        </header>
+
+        <main>
+
+          <div class="container">
+
+            <h2 id="textQuiz"></h2>
+
+            <div id="respostas">
+            
+              <button id="resp0" value="resp0" class="resposta" type="button"></button>
+
+              <button id="resp1" value="resp1" class="resposta" type="button"></button>
+
+              <button id="resp2" value="resp2" class="resposta" type="button"></button>
+
+              <button id="resp3" value="resp3" class="resposta" type="button"></button>
+            
+            </div>
+
+          </div>
+
+        </main>
+
+        <footer class="">
+
+          <hr>
+
+          <div class="container" id="placar">
+
+            <div>
+            
+              <table class="table" id="erros">
+  
+              <thead>
+    
+                <tr>
+    
+                  <th scope="col">Erros</th>
+    
+                </tr>
+    
+              </thead>
+    
+              <tbody>
+    
+                <tr>
+    
+                  <td id="indiceErro"></td>
+    
+                </tr>
+    
+              </tbody>
+    
+              </table>
+            
+            </div>
+
+            <button id="verific">VERIFICAR RESPOSTA</button>
+
+            <div>
+
+              <table class="table" id="acertos">
+  
+              <thead>
+    
+                <tr>
+    
+                  <th scope="col">Acertos</th>
+    
+                </tr>
+    
+              </thead>
+
+              <tbody>
+    
+                <tr>
+    
+                  <td id="indiceAcerto"></td>
+    
+                </tr>
+    
+              </tbody>
+    
+              </table>
+            
+            </div>
+
+          </div>
+
+        </footer>
+
+      </div>
+
+    </div>
+
+    <div class="container">
+    
+      <div id="status" class="oculto" >
+
+        <h3 id="mensagem">Seu desempenho</h3>
+
+        <div id="imgDesempenho">
+
+          <img id="imgDesempenho" src="" alt="">
+
         </div>
 
-      </main>
+        <p id="desempenho"></p>
+  
+        <button type="button" id="novoJogo">Novo Jogo</button>
+  
+      </div>
 
-      <hr>
+    </div>
 
-      <footer>
-
-        <div class="container">
-
-          <button id="verific">VERIFICAR RESPOSTA</button>
-
-        </div>
-
-      </footer>
-      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

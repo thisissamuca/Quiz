@@ -217,6 +217,14 @@ $(document).ready(() => {
 
     var qtdPerguntas = perguntas.length - 1
 
+    var indiceACerto = $('#indiceAcerto').html('0')
+
+    var acertos = []
+
+    var indiceErro = $('#indiceErro').html('0')
+
+    var erros = []
+
     /* ------------------------------------------------------------------------------- */
 
     /* -------------------- ** CRIANDO FUNÇÕES ** ----------------------- */
@@ -402,21 +410,37 @@ $(document).ready(() => {
 
                     var respEscolhida = $(this).attr('id') // Atribuindo o atribudo id no elemento
 
-                    if (respCerta == respEscolhida) { // Caso a resposta escolhida for igual a resposta certa
+                    if (respCerta == respEscolhida) { //TODA VEZ QUE ACERTAR
 
                         console.log('Você acertou. Parabéns!')
 
                         console.log('-----------------------')
 
+                        // Adicionar um ponto ao Array que está apontando para o placar de acertos
+
+                        acertos.push(1)
+
+                        // Seleciona o placar de acertor com a quantidade que está dentro do array
+
+                        $('#indiceAcerto').html(acertos.length)
+
                         // Chamando a função para ir à próxima pergunta
     
                         proximaPergunta ();
 
-                    } else {
+                    } else { //TODA VEZ QUE ERRAR
 
                         console.log('Ohh, não! Você errou.')
 
                         console.log('-----------------------')
+
+                        // Adicionar um ponto ao Array que está apontando para o placar de erros
+
+                        erros.push(1)
+
+                        // Seleciona o placar de erros com a quantidade que está dentro do array
+
+                        $('#indiceErro').html(erros.length)
 
                         // Adicionando o atributo 'travado' a div #quiz
 
@@ -440,13 +464,35 @@ $(document).ready(() => {
 
                         // Definindo um time para agir
 
-                        setTimeout(function () {
+                        if (perguntasFeitas.length < qtdPerguntas + 1) { // Caso o número de perguntas for menor que o número total de pergutnas
 
-                            // Chamando a função para ir à próxima pergunta
-        
-                            proximaPergunta();
-        
-                        }, 3500);
+                            setTimeout(function () {
+
+                                // Chamando a função para ir à próxima pergunta
+            
+                                proximaPergunta();
+
+                                console.log('Vamos para a próxima pergunta')
+
+                                console.log('-----------------------')
+            
+                            }, 3500);
+    
+                        } else {
+
+                            setTimeout(function () {
+            
+                                // Chamando a função para terminar o jogo caso todas as perguntas tenham sido feitas
+            
+                                fimJogo ();
+
+                                console.log('Fim de jogo.')
+
+                                console.log('-----------------------')
+            
+                            }, 4000);
+            
+                        };
 
                     };
                     
@@ -458,8 +504,70 @@ $(document).ready(() => {
 
     };
 
-    /* FUNÇÃO DE IR PARA A PRÓXIMA PERGUNTA */
+    /* FUNÇÃO FIM DE JOGO*/
 
+    function fimJogo () {
+
+        // Sumindo com o quiz
+
+        $('.quiz').addClass('oculto')
+
+        // Escrevendo mensagem no HTML
+
+        $('#mensagem').html('O jogo acabou!')
+
+        // Definindo variáveis para o cálculo de desempenho
+
+        var acertosConv = Number.parseInt(acertos.length)
+
+        var razao = acertosConv / (qtdPerguntas + 1)
+
+        // Condições em função do resultado para fixar um GIF no final do jogo
+
+        if (acertos.length <= 5) {
+
+            $('#imgDesempenho').html("<img src='https://i.pinimg.com/originals/a2/42/20/a242206ce688c2234c2d5ed4e98a1573.gif' alt=''>")
+
+            $('#desempenho').html(`Tem certeza que você está estudando direito? Seu desempenho foi de ${razao*100}%`)
+
+        } else if (acertos.length <= 10) {
+
+            $('#imgDesempenho').html("<img src='https://thumbs.gfycat.com/EminentCharmingAustraliancattledog-size_restricted.gif' alt=''>")
+
+            $('#desempenho').html(`Convenhamos... Poderia ser melhor, né. Seu desempenho foi de ${razao*100}%`)
+
+        } else if (acertos.length <= 15) {
+
+            $('#imgDesempenho').html("<img src='https://i.pinimg.com/originals/c1/af/2b/c1af2b8bd355006014ac1b11a06904c6.gif' alt=''>")
+
+            $('#desempenho').html(`Você foi incrível! Seu desempenho foi de ${razao*100}%`)
+
+        } else if (acertos.length = 20) {
+
+            $('#imgDesempenho').html("<img src='https://c.tenor.com/kVJlKG9tUm8AAAAC/leonardo-dicaprio-leo-dicaprio.gif' alt=''>")
+
+            $('#desempenho').html(`Perfeito! Sê é o bixão mesmo em doido! Seu desempenho foi de ${razao*100}%`)
+
+        };
+
+        // Aparecendo com o painel no fim do jogo
+
+        $('#status').removeClass('oculto')
+
+        // Resetando o placar
+
+        acertos.length = 0
+
+        erros.length = 0
+
+        var indiceErro = $('#indiceErro').html('0')
+
+        var indiceAcerto = $('#indiceAcerto').html('0')
+
+    };
+
+    /* FUNÇÃO DE IR PARA A PRÓXIMA PERGUNTA */
+    
     function proximaPergunta () {
 
         // Removendo a classe 'oculto' do botão #verific
@@ -502,4 +610,41 @@ $(document).ready(() => {
 
     };
 
-})
+     /* FUNÇÃO PARA COMEÇAR UM NOVO JOGO */
+
+    function novoJogo() {
+
+        // Aparecendo com o botão VERIFICAR RESPOSTA no novo jogo 
+
+        $('#verific').removeClass('oculto')
+
+        // Adicionando o atributo 'ok' em 'data-status' 
+
+        $('#quiz').attr('data-status', 'ok')
+
+        // Resetando o número de perguntas feitas 
+    
+        var perguntasFeitas = []
+
+        // Chamando a função para resetar os botões 
+
+        resetaBotoes();
+
+        // Chamando a função de gerar perguntas
+
+        gerarPergunta(qtdPerguntas);
+    
+        $('.quiz').removeClass('oculto')
+        $('#status').addClass('oculto')
+
+    };
+
+    // Ativando a função para começar um novo jogo
+
+    $('#novoJogo').click(function() {
+
+        novoJogo();
+
+    });
+
+});
