@@ -46,6 +46,8 @@ function gerarPergunta(maxPerguntas) {
 
     let aleatorio = Number((Math.random() * maxPerguntas).toFixed())
 
+    console.log(`O número aleatório gerado é ${maxPerguntas}`)
+
     // Verificar se a pergunta foi feita
 
     if (!perguntasFeitas.includes(aleatorio)) {
@@ -134,44 +136,53 @@ function resetaBotoes () {
     })
 }
 
-$('#confirm').click(function () {
+verificarResposta ()
 
-    var indice = $('#textQuiz').attr('data-indice');
+function verificarResposta () {
 
-    var respCerta = perguntas[indice].acerto;
+    $('#confirm').click(function () {
 
-    $('.resposta').each(function () {
-
-        if ($(this).hasClass('selecionada')) {
-
-            var respEscolhida = $(this).attr('id');
-
-            if (respCerta == respEscolhida) {
-
-                console.log('Acertou')
-
-                proximaPergunta ()
-
-            } else {
-
-                console.log('ERRROUUU')
-
-                $('#quiz').attr('data-status', 'travado')
-                $('#confirm').addClass('oculto')
-                $('#' + respCerta).addClass('correta')
-                $('#' + respEscolhida).removeClass('selecionada')
-                $('#' + respEscolhida).addClass('errada')
-                setTimeout(function () {
-
-                    gameOver()
-
-                }, 2000)
-            
+        var indice = $('#textQuiz').attr('data-indice');
+    
+        var respCerta = perguntas[indice].acerto;
+    
+        $('.resposta').each(function () {
+    
+            if ($(this).hasClass('selecionada')) {
+    
+                var respEscolhida = $(this).attr('id');
+    
+                if (respCerta == respEscolhida) {
+    
+                    console.log('Acertou')
+    
+                    proximaPergunta ()
+    
+                } else {
+    
+                    console.log('ERRROUUU')
+    
+                    $('#quiz').attr('data-status', 'travado')
+                    $('#confirm').addClass('oculto')
+                    $('#' + respCerta).addClass('correta')
+                    $('#' + respEscolhida).removeClass('selecionada')
+                    $('#' + respEscolhida).addClass('errada')
+                    setTimeout(function () {
+    
+                        gameOver()
+    
+                    }, 2000)
+                
+                }
             }
-        }
+        })
+    
     })
 
-})
+
+}
+
+
 
 function gameOver () {
 
