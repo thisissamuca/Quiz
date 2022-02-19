@@ -298,7 +298,25 @@ $(document).ready(() => {
 
                 return gerarPergunta(maxPerguntas);
                 
-            };
+            } 
+            
+            if (perguntasFeitas.length >= qtdPerguntas + 1) { // Caso todas as perguntas já ter sido feitas
+
+                setTimeout(function () {
+
+                    // Chamando a função para terminar o jogo caso todas as perguntas tenham sido feitas
+
+                    fimJogo ();
+
+                    resetaBotoes ();
+
+                    console.log('Fim de jogo.')
+
+                    console.log('-----------------------')
+
+                }, 1000);
+
+            }; 
 
         };
 
@@ -444,7 +462,7 @@ $(document).ready(() => {
 
                         // Adicionando o atributo 'travado' a div #quiz
 
-                        $('#quiz').attr('data-status', 'travado')
+                        $('.quiz').attr('data-status', 'travado')
 
                         // Adicionando a classe 'oculto' do botão #verific
 
@@ -464,7 +482,7 @@ $(document).ready(() => {
 
                         // Definindo um time para agir
 
-                        if (perguntasFeitas.length < qtdPerguntas + 1) { // Caso o número de perguntas for menor que o número total de pergutnas
+                        if (perguntasFeitas.length < qtdPerguntas + 1) { // Caso o número de perguntas for menor que o número total de perguntas
 
                             setTimeout(function () {
 
@@ -476,23 +494,25 @@ $(document).ready(() => {
 
                                 console.log('-----------------------')
             
-                            }, 3500);
+                            }, 0);
     
-                        } else {
-
-                            setTimeout(function () {
-            
-                                // Chamando a função para terminar o jogo caso todas as perguntas tenham sido feitas
-            
-                                fimJogo ();
-
-                                console.log('Fim de jogo.')
-
-                                console.log('-----------------------')
-            
-                            }, 4000);
-            
                         };
+                                    
+                        if (perguntasFeitas.length >= qtdPerguntas + 1) { // Caso as perguntas tiverem acabado
+                        
+                            setTimeout(function () {
+                            
+                                // Chamando a função para terminar o jogo caso todas as perguntas tenham sido feitas
+                            
+                                fimJogo ();
+                            
+                                console.log('Fim de jogo.')
+                            
+                                console.log('-----------------------')
+                            
+                            }, 1000);
+                        
+                        }; 
 
                     };
                     
@@ -556,9 +576,9 @@ $(document).ready(() => {
 
         // Resetando o placar
 
-        acertos.length = 0
+        erros = []
 
-        erros.length = 0
+        acertos = []
 
         var indiceErro = $('#indiceErro').html('0')
 
@@ -577,6 +597,10 @@ $(document).ready(() => {
         // Chamando a função para resetar os botões
 
         resetaBotoes();
+
+        // Destravando o quiz
+
+        $('.quiz').attr('data-status', 'ok')
 
         // Chamando a função para carregar novas perguntas
     
@@ -620,11 +644,11 @@ $(document).ready(() => {
 
         // Adicionando o atributo 'ok' em 'data-status' 
 
-        $('#quiz').attr('data-status', 'ok')
+        $('.quiz').attr('data-status', 'ok')
 
         // Resetando o número de perguntas feitas 
     
-        var perguntasFeitas = []
+        perguntasFeitas = []
 
         // Chamando a função para resetar os botões 
 
@@ -636,6 +660,8 @@ $(document).ready(() => {
     
         $('.quiz').removeClass('oculto')
         $('#status').addClass('oculto')
+
+        verificarResposta ()
 
     };
 
