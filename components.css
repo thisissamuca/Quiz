@@ -1,3 +1,42 @@
+/* ------------------------------------------------------------------------------- */
+
+/* -------------------- ** HEADER ** ----------------------- */
+
+#sairBtn {
+
+    border: none;
+    outline: none;
+
+    width: 50px;
+
+
+
+}
+
+#sairImg {
+
+    width: 50px;
+
+    border: none;
+    border-radius: 50%;
+    outline: none;
+
+}
+
+.btnControl {
+
+    background-color: white;
+
+    border: none;
+    border-radius: 50%;
+    outline: none;
+
+    margin-top: 30px;
+
+    width: 50px;
+    height: 100%;
+
+}
 
 /* ------------------------------------------------------------------------------- */
 
@@ -123,8 +162,11 @@
 /* CONTAINER */
 
 #placar {
+
     display: flex;
+
     justify-content: space-around;
+
 }
 
 /* BTN VERIFICAR RESPOSTA */

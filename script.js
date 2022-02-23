@@ -6,6 +6,8 @@ $(document).ready(() => {
 
     var perguntasFeitas = []
 
+    var feitas = $('#perguntasFeitas').html(perguntasFeitas.length)
+
     /* CRIANDO TODAS AS PERGUNTAS DO JOGO */
 
     var perguntas = [
@@ -213,6 +215,8 @@ $(document).ready(() => {
 
     ]
 
+    var total = $('#qtdMax').html(perguntas.length)
+
     /* TODAS AS PERGUNTAS DO JOGO */
 
     var qtdPerguntas = perguntas.length - 1
@@ -224,6 +228,7 @@ $(document).ready(() => {
     var indiceErro = $('#indiceErro').html('0')
 
     var erros = []
+
 
     /* ------------------------------------------------------------------------------- */
 
@@ -438,6 +443,14 @@ $(document).ready(() => {
 
                         acertos.push(1)
 
+                        // Adicionar um ponto ao Array que está apontando para o placar de feitas
+
+                        feitas.push(1)
+
+                        // Seleciona o placar de feitas com a quantidade que está dentro do array
+
+                        $('#perguntasFeitas').html(perguntasFeitas.length)
+
                         // Seleciona o placar de acertor com a quantidade que está dentro do array
 
                         $('#indiceAcerto').html(acertos.length)
@@ -455,6 +468,14 @@ $(document).ready(() => {
                         // Adicionar um ponto ao Array que está apontando para o placar de erros
 
                         erros.push(1)
+
+                        // Adicionar um ponto ao Array que está apontando para o placar de feitas
+
+                        feitas.push(1)
+
+                        // Seleciona o placar de feitas com a quantidade que está dentro do array
+
+                        $('#perguntasFeitas').html(perguntasFeitas.length)
 
                         // Seleciona o placar de erros com a quantidade que está dentro do array
 
@@ -634,7 +655,7 @@ $(document).ready(() => {
 
     };
 
-     /* FUNÇÃO PARA COMEÇAR UM NOVO JOGO */
+    /* FUNÇÃO PARA COMEÇAR UM NOVO JOGO */
 
     function novoJogo() {
 
@@ -673,4 +694,14 @@ $(document).ready(() => {
 
     });
 
-});
+    // Desabilitando o botão e abrindo outra página
+
+    $('.btnControl').click(() => {
+
+        $('.btnControl').addClass('oculto')
+
+        window.location.replace("https://thisissamuca.github.io/E-herbert-CardQuestionary-Login/");
+
+    })
+            
+})
